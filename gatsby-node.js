@@ -7,20 +7,18 @@ exports.createPages = ({ graphql, actions }) => {
         wpgraphql {
             posts {
                 edges {
-                node {
-                    title
-                    slug
-                    content(format: RENDERED)
-                    date
-                    featuredImage {
-                        altText
-                        link
-                        uri
+                    node {
+                        databaseId
+                        slug
+                        title
+                        date
+                        content(format: RENDERED)
+                        featuredImage {
+                            altText
+                            link
+                            uri
+                        }
                     }
-                    author {
-                    name
-                    }
-                }
                 }
             }
         }
@@ -34,6 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
           // This is the $slug variable
           // passed to blog-post.js
           slug: node.slug,
+          databaseId: node.databaseId,
         },
       })
     })

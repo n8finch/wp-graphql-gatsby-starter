@@ -1,16 +1,47 @@
 import React from "react"
 import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const SecondPage = () => (
+const SecondPage = ({data}) => (
   <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+    <SEO title={data.wpgraphql.post.title} description={data.wpgraphql.post.excerpt}/>
+    
+    <h1 dangerouslySetInnerHTML={{ __html: data.wpgraphql.post.title }} />
+
+    <div dangerouslySetInnerHTML={{ __html: data.wpgraphql.post.content }} />
+
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 )
 
 export default SecondPage
+
+export const query = graphql`
+  query($databaseId: ID!) {
+    wpgraphql {
+      post(id: $databaseId, idType: DATABASE_ID) {
+        title
+        date
+        content(format: RENDERED)
+        categories {
+          edges {
+            node {
+              name
+            }
+          }
+        }
+        excerpt(format: RENDERED)
+        featuredImage {
+          altText
+          uri
+          title(format: RENDERED)
+          mediaItemUrl
+          slug
+        }
+      }
+    }
+  }
+`
