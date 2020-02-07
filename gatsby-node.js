@@ -5,7 +5,7 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(`
     query GET_POSTS {
         wpgraphql {
-            posts {
+            posts(first: 1000, after: null) {
                 edges {
                     node {
                         databaseId

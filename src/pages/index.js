@@ -13,7 +13,7 @@ const IndexPage = ({data}) => (
       {data.wpgraphql.posts.edges.map(({ node }) => (
         <div key={node.slug}>
           <Link to={node.slug}>
-            <p>{node.title}</p>
+          <div dangerouslySetInnerHTML={{ __html: node.title }} />
           </Link>
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
         </div>
@@ -26,7 +26,7 @@ export default IndexPage
 export const pageQuery = graphql`
   query GET_POSTS {
     wpgraphql {
-        posts {
+        posts(first: 1000, after: null) {
             edges {
                 node {
                     databaseId
