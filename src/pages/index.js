@@ -18,6 +18,15 @@ const IndexPage = ({data}) => (
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
         </div>
       ))}
+    <h2>Pages</h2>
+      {data.wpgraphql.pages.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={node.slug}>
+          <div dangerouslySetInnerHTML={{ __html: node.title }} />
+          </Link>
+          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+        </div>
+      ))}
   </Layout>
 )
 
@@ -37,6 +46,24 @@ export const pageQuery = graphql`
                     featuredImage {
                         altText
                         link
+                        mediaItemUrl
+                        uri
+                    }
+                }
+            }
+        }
+        pages(first: 1000, after: null) {
+            edges {
+                node {
+                    databaseId
+                    slug
+                    title
+                    date
+                    content(format: RENDERED)
+                    featuredImage {
+                        altText
+                        link
+                        mediaItemUrl
                         uri
                     }
                 }
