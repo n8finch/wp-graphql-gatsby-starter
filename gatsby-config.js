@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `All The Things...`,
+    description: `Keeping it clever...`,
+    author: `@n8finch`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -15,6 +15,17 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: `WPGraphQL`,
+        // This is field under which it's accessible
+        fieldName: `wpgraphql`,
+        // Url to query from
+        url: `https://dev-n8finch.pantheonsite.io/graphql`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
