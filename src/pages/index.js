@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = ({data}) => (
@@ -18,6 +18,9 @@ const IndexPage = ({data}) => (
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
         </div>
       ))}
+      <br/>
+      <hr/>
+      <br/>
     <h2>Pages</h2>
       {data.wpgraphql.pages.edges.map(({ node }) => (
         <div key={node.slug}>
@@ -25,6 +28,17 @@ const IndexPage = ({data}) => (
           <div dangerouslySetInnerHTML={{ __html: node.title }} />
           </Link>
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+        </div>
+      ))}
+      <br/>
+      <hr/>
+      <br/>
+    <h2>Categories</h2>
+      {data.wpgraphql.categories.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/category/${node.slug}`}>
+          <div dangerouslySetInnerHTML={{ __html: node.name }} />
+          </Link>
         </div>
       ))}
   </Layout>
@@ -68,6 +82,15 @@ export const pageQuery = graphql`
                     }
                 }
             }
+        }
+        categories(first: 1000) {
+          edges {
+            node {
+              databaseId
+              name
+              slug
+            }
+          }
         }
     }
   }

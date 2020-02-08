@@ -83,4 +83,38 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   });
 
+
+  /**
+   * Create Category Pages
+   */
+  const categoryPageResults = await graphql(`
+    query GET_CATEGORY_PAGES {
+      wpgraphql {
+        categories(first: 1000) {
+          edges {
+            node {
+              databaseId
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  
+  categoryPageResults.data.wpgraphql.categories.edges.forEach(({ node }) => {
+    createPage({
+      path: `/category/${node.slug}`,
+      component: path.resolve(`./src/templates/category-page-template.js`),
+      context: {
+        // This is the $slug variable
+        // passed to blog-post.js
+        slug: node.slug,
+        databaseId: node.databaseId,
+        name: node.name
+      },
+    })
+  });
+
 }
