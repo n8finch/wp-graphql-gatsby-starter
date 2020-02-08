@@ -117,4 +117,37 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   });
 
+  /**
+   * Create Tags Pages
+   */
+  const tagPageResults = await graphql(`
+    query GET_CATEGORY_PAGES {
+      wpgraphql {
+        tags(first: 1000) {
+          edges {
+            node {
+              databaseId
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  
+  tagPageResults.data.wpgraphql.tags.edges.forEach(({ node }) => {
+    createPage({
+      path: `/tag/${node.slug}`,
+      component: path.resolve(`./src/templates/tag-page-template.js`),
+      context: {
+        // This is the $slug variable
+        // passed to blog-post.js
+        slug: node.slug,
+        databaseId: node.databaseId,
+        name: node.name
+      },
+    })
+  });
+
 }

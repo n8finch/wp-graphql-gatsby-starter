@@ -41,6 +41,17 @@ const IndexPage = ({data}) => (
           </Link>
         </div>
       ))}
+      <br/>
+      <hr/>
+      <br/>
+    <h2>Tags</h2>
+      {data.wpgraphql.tags.edges.map(({ node }) => (
+        <div key={node.slug}>
+          <Link to={`/tag/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.name }} />
+          </Link>
+        </div>
+      ))}
   </Layout>
 )
 
@@ -84,6 +95,15 @@ export const pageQuery = graphql`
             }
         }
         categories(first: 1000) {
+          edges {
+            node {
+              databaseId
+              name
+              slug
+            }
+          }
+        }
+        tags(first: 1000) {
           edges {
             node {
               databaseId
