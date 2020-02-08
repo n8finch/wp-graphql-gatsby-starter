@@ -627,12 +627,17 @@ nav,
 nav a {
   color: white;
 }
+nav {
+  display: flex;
+  justify-content: space-around;
+}
 
 a {
   display: inline-block;
   min-width: 50px;
   min-height: 50px;
 }
+
 
 /* Dark mode styles */
 .dark-switcher {

@@ -4,7 +4,7 @@
 
 I've tried to make this as simple and straightforward to get started. 
 
-Here's the [DEMO]().
+Here's the [DEMO](https://wp-graphql-gatsby-starter.netlify.com/).
 
 The demo site here uses the good ol' [WordPress Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test) for demo posts.
 

@@ -1,7 +1,7 @@
 {
   "name": "wp-graphql-gatsby-starter",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby and WP GraphQL",
+  "description": "A simple starter to get up and developing quickly with Gatsby and WP GraphQL.",
   "version": "0.1.0",
   "author": "Nate Finch <finchproservices@gmail.com>",
   "dependencies": {
