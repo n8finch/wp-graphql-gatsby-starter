@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `All The Things...`,
+    title: `WP GraphQL Gatsby Starter`,
     description: `Keeping it clever...`,
     author: `@n8finch`,
   },
