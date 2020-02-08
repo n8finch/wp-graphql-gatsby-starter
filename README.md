@@ -5,10 +5,13 @@ Working out my own custom Gatsby theme for my site.
 ## The ToDo List
 
 - ✅ posts queried and displayed
-- ___ Featured images done with Gatsby Image
 - ✅ pages queried and displayed
-- ___ internal links are replaced with Gatsby `Link`
+- ✅ categories and tags queried and displayed
 - ___ implement light/dark mode
-- ___ categories and tags queried and displayed
-- ___ 
 - arrange and style like tania.dev and adamwathan.me
+
+
+## Stretch Goals
+
+- ___ Featured images done with Gatsby Image
+- ___ internal links are replaced with Gatsby `Link` (`gatsby-plugin-catch-links` doesn't seem to work?)
