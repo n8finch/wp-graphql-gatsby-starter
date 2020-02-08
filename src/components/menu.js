@@ -7,20 +7,68 @@ export default () => (
         query MenuQuery {
             wpgraphql {
                 menuItems(where: {location: SOCIAL}) {
-                    edges {
+                edges {
+                    node {
+                    label
+                    url
+                    childItems {
+                        edges {
                         node {
-                        label
-                        url
-                        childItems {
+                            label
+                            url
+                            childItems {
                             edges {
-                            node {
-                                label
-                                url
+                                node {
+                                connectedObject {
+                                    ... on WPGraphQL_Post {
+                                    slug
+                                    title
+                                    }
+                                    ... on WPGraphQL_MenuItem {
+                                    title
+                                    }
+                                    ... on WPGraphQL_Tag {
+                                    slug
+                                    name
+                                    }
+                                    ... on WPGraphQL_Category {
+                                    slug
+                                    name
+                                    }
+                                    ... on WPGraphQL_Page {
+                                    slug
+                                    title
+                                    }
+                                }
+                                }
                             }
                             }
                         }
                         }
                     }
+                    connectedObject {
+                        ... on WPGraphQL_Post {
+                        slug
+                        title
+                        }
+                        ... on WPGraphQL_MenuItem {
+                        title
+                        }
+                        ... on WPGraphQL_Tag {
+                        slug
+                        name
+                        }
+                        ... on WPGraphQL_Category {
+                        slug
+                        name
+                        }
+                        ... on WPGraphQL_Page {
+                        slug
+                        title
+                        }
+                    }
+                    }
+                }
                 }
             }
         }
@@ -28,24 +76,28 @@ export default () => (
 
     render={data => (
       <nav>
+        <ul>
+
          {data.wpgraphql.menuItems.edges.map(({ node }) => (
-            <div key={node.id}>
+            <li key={node.id}>
                 {('#' !== node.url) ? (
                     <Link to={`${node.url}`}>{node.label}</Link>
                 ) : (
                     <div>{node.label}</div>
                 )}
-                {(node.childItems) && (
-                    <ul>
-                    {node.childItems.edges.map(({ node }) => (
-                        <li key={node.id}>
-                            <Link to={`${node.url}`}>{node.label}</Link>
-                        </li>
-                    ))}
+                {(node.childItems.edges.length > 0) && (
+                    <ul className="sub-nav">
+                        {console.log(node)}
+                        {node.childItems.edges.map(({ node }) => (
+                            <li key={node.id}>
+                                <Link to={`${node.url}`}>{node.label}</Link>
+                            </li>
+                        ))}
                     </ul>
                 )}
-            </div>
+            </li>
         ))}
+        </ul>
       </nav>
     )}
   />

@@ -627,16 +627,41 @@ nav,
 nav a {
   color: white;
 }
-nav {
-  display: flex;
-  justify-content: space-around;
-}
 
 a {
   display: inline-block;
   min-width: 50px;
   min-height: 50px;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul {
+  display: inherit;
+  list-style: none;
+  margin: 0;
+}
+
+nav li {
+  margin: 5px;
+}
+
+nav ul.sub-nav {
+  /* display: none; */
+  border: 1px solid #fff;
+}
+
+nav a:hover + ul.sub-nav {
+  display: block;
+}
+
+nav ul.sub-nav li {
+  margin: 5px;
+}
+
 
 
 /* Dark mode styles */
