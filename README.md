@@ -7,7 +7,8 @@ Working out my own custom Gatsby theme for my site.
 - ✅ posts queried and displayed
 - ✅ pages queried and displayed
 - ✅ categories and tags queried and displayed
-- ___ implement light/dark mode
+- ✅ implement light/dark mode, from [Using React Context API with Gatsby by Muhammad Muhsin](https://www.gatsbyjs.org/blog/2019-01-31-using-react-context-api-with-gatsby/)
+- ___ set up some kind of menu, a PRIMARY menu
 - arrange and style like tania.dev and adamwathan.me
 
 
