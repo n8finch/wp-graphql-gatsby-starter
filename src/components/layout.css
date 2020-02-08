@@ -630,7 +630,7 @@ pre tt:after {
   border: none;
   cursor: pointer;
 }
-@media (min-width: 92px) {
+@media (min-width: 100px) {
   .dark-switcher {
     position: absolute;
     right: 15px;
