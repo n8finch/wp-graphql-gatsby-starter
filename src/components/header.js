@@ -1,12 +1,14 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Menu from './menu'
 
 import ThemeContext from "../context/ThemeContext"
 
 const Header = ({ siteTitle }) => (
   <ThemeContext.Consumer>
     {theme => (
+      
       <div
         style={{
           background: `rebeccapurple`,
@@ -31,6 +33,9 @@ const Header = ({ siteTitle }) => (
               {siteTitle}
             </Link>
           </h1>
+          
+          <Menu/>
+
           <button className="dark-switcher" onClick={theme.toggleDark}>
             {theme.dark ? <span>☀</span> : <span>☾</span>}
           </button>

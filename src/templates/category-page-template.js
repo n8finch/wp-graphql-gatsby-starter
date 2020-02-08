@@ -12,13 +12,13 @@ const SecondPage = ({data}) => (
     <h1 dangerouslySetInnerHTML={{ __html: data.wpgraphql.category.name }} />
 
     {data.wpgraphql.category.posts.edges.map(({ node }) => (
-        <div key={node.slug}>
-          <Link to={`/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.title }} />
-          </Link>
-          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-        </div>
-      ))}
+      <div key={node.slug}>
+        <Link to={`/${node.slug}`}>
+        <div dangerouslySetInnerHTML={{ __html: node.title }} />
+        </Link>
+        <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+      </div>
+    ))}
 
     <Link to="/">Go back to the homepage</Link>
   </Layout>
