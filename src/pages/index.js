@@ -12,8 +12,8 @@ const IndexPage = ({data}) => (
     <h2>Posts</h2>
       {data.wpgraphql.posts.edges.map(({ node }) => (
         <div key={node.slug}>
-          <Link to={node.slug}>
-          <div dangerouslySetInnerHTML={{ __html: node.title }} />
+          <Link to={`/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.title }} />
           </Link>
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
         </div>
@@ -24,8 +24,8 @@ const IndexPage = ({data}) => (
     <h2>Pages</h2>
       {data.wpgraphql.pages.edges.map(({ node }) => (
         <div key={node.slug}>
-          <Link to={node.slug}>
-          <div dangerouslySetInnerHTML={{ __html: node.title }} />
+          <Link to={`/${node.slug}`}>
+            <div dangerouslySetInnerHTML={{ __html: node.title }} />
           </Link>
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
         </div>
@@ -37,7 +37,7 @@ const IndexPage = ({data}) => (
       {data.wpgraphql.categories.edges.map(({ node }) => (
         <div key={node.slug}>
           <Link to={`/category/${node.slug}`}>
-          <div dangerouslySetInnerHTML={{ __html: node.name }} />
+            <div dangerouslySetInnerHTML={{ __html: node.name }} />
           </Link>
         </div>
       ))}

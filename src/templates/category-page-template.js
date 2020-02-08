@@ -8,14 +8,12 @@ import SEO from "../components/seo"
 const SecondPage = ({data}) => (
   <Layout>
     <SEO title={data.wpgraphql.category.name} description={data.wpgraphql.category.name}/>
-    {console.log(data.wpgraphql.category.posts)}
-
-
+    
     <h1 dangerouslySetInnerHTML={{ __html: data.wpgraphql.category.name }} />
 
     {data.wpgraphql.category.posts.edges.map(({ node }) => (
         <div key={node.slug}>
-          <Link to={node.slug}>
+          <Link to={`/${node.slug}`}>
           <div dangerouslySetInnerHTML={{ __html: node.title }} />
           </Link>
           <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
