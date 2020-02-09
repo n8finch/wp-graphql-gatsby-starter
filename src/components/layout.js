@@ -32,9 +32,11 @@ const Layout = ({ children }) => (
             >
               {children}
               <footer>
-                © {new Date().getFullYear()}, Built with
+                © {new Date().getFullYear()}, Starter built with
                 {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
+                <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>
+                {` `}by{` `}
+                <a href="https://n8finch.com" target="_blank">Nate Finch</a>
               </footer>
             </div>
           </div>
