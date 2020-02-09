@@ -1,8 +1,18 @@
 # WP GraphQL Gatsby Starter
 
-> A super simple, bare-bone starter that uses the WP GraphQL plugin to pull posts, pages, categories, tags, and a menu from your WordPress site. Also should start you at 💯💯💯💯 across the board on Chrome Lighthouse Audits
+> A super simple, bare-bone starter based on the Gatsby Starter for the front end and the WP GraphQL plugin on your WordPress install. 
+
+This is a basic "headless CMS" setup. This starter will pull posts, pages, categories, tags, and a menu from your WordPress site. You should use either the TwentyNineteen or TwentyTwenty WordPress themes on your WordPress install. 
+
+The example here uses the WordPress Theme Unit Test Data for post and page dummy content. 
+
+**Find something wrong?** Issues are welcome on the starter reository. 
+
+This Stater should get you started at 💯💯💯💯 across the board on Chrome Lighthouse Audits
 
 ![Lighthouse scores](src/images/lighthouse-score.jpg)
+
+## Get Started
 
 I've tried to make this as simple and straightforward to get started. 
 
@@ -38,26 +48,68 @@ If you need to edit ID or the depth of the menu, you can do so in the `src/compo
 {
   wpgraphql {
     menuItems(where: {location: SOCIAL}) {
-      edges {
+    edges {
         node {
-          label
-          url
-          childItems {
+        label
+        url
+        connectedObject {
+            ... on WPGraphQL_Post {
+            slug
+            title
+            }
+            ... on WPGraphQL_MenuItem {
+            title
+            }
+            ... on WPGraphQL_Tag {
+            slug
+            name
+            }
+            ... on WPGraphQL_Category {
+            slug
+            name
+            }
+            ... on WPGraphQL_Page {
+            slug
+            title
+            }
+        }
+        childItems {
             edges {
-              node {
+            node {
                 label
                 url
-              }
+                connectedObject {
+                ... on WPGraphQL_Post {
+                    slug
+                    title
+                }
+                ... on WPGraphQL_MenuItem {
+                    title
+                }
+                ... on WPGraphQL_Tag {
+                    slug
+                    name
+                }
+                ... on WPGraphQL_Category {
+                    slug
+                    name
+                }
+                ... on WPGraphQL_Page {
+                    slug
+                    title
+                }
+                }
             }
-          }
+            }
         }
-      }
+        }
+    }
     }
   }
 }
 ```
 
-## The ToDo List
+## Main List of Features
 
 - ✅ posts queried and displayed
 - ✅ pages queried and displayed
@@ -66,7 +118,7 @@ If you need to edit ID or the depth of the menu, you can do so in the `src/compo
 - ✅ implement light/dark mode, from [Using React Context API with Gatsby by Muhammad Muhsin](https://www.gatsbyjs.org/blog/2019-01-31-using-react-context-api-with-gatsby/)
 - ✅ get all Lighthouse Audits to 💯as a starting point.
 
-## Stretch Goals
+## ToDo List and Stretch Goals
 
 - ___ Featured images done with Gatsby Image
 - ___ Pagination for Posts, Pages, Categories, Tags
