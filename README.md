@@ -67,5 +67,6 @@ If you need to edit ID or the depth of the menu, you can do so in the `src/compo
 ## Stretch Goals
 
 - ___ Featured images done with Gatsby Image
+- ___ Pagination for Posts, Pages, Categories, Tags
 - ___ internal links are replaced with Gatsby `Link` (`gatsby-plugin-catch-links` doesn't seem to work?)
 

@@ -678,9 +678,11 @@ nav ul.sub-nav li {
 }
 @media (min-width: 100px) {
   .dark-switcher {
+    height: 48px;
     position: absolute;
-    right: 15px;
-    top: 10px;
+    right: 0;
+    top: 0;
+    width: 48px;
   }
 }
 .dark {
