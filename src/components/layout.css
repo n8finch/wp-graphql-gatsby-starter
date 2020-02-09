@@ -636,7 +636,7 @@ a {
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 nav ul {
@@ -647,14 +647,18 @@ nav ul {
 
 nav li {
   margin: 5px;
+  position: relative;
 }
 
 nav ul.sub-nav {
-  /* display: none; */
+  background-color: rebeccapurple;
   border: 1px solid #fff;
+  display: none;
+  position: absolute;
 }
 
-nav a:hover + ul.sub-nav {
+nav a:hover + ul.sub-nav,
+nav a + ul.sub-nav:hover {
   display: block;
 }
 
