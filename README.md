@@ -1,6 +1,8 @@
 # WP GraphQL Gatsby Starter
 
-> A super simple, bare-bone starter that uses the WP GraphQL plugin to pull posts, pages, categories, tags, and a menu from your WordPress site.
+> A super simple, bare-bone starter that uses the WP GraphQL plugin to pull posts, pages, categories, tags, and a menu from your WordPress site. Also should start you at 💯💯💯💯 across the board on Chrome Lighthouse Audits
+
+![Lighthouse scores](src/images/lighthouse-score.jpg)
 
 I've tried to make this as simple and straightforward to get started. 
 
@@ -9,7 +11,6 @@ Here's the [DEMO](https://wp-graphql-gatsby-starter.netlify.com/).
 The demo site here uses the good ol' [WordPress Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test) for demo posts.
 
 If you've already got your WordPress site set up, or you are just looking to play around, here's what you need to do...
-
 
 ## 1. Setup on You WordPress Site and in the Starter
 
@@ -63,10 +64,12 @@ If you need to edit ID or the depth of the menu, you can do so in the `src/compo
 - ✅ categories and tags queried and displayed
 - ✅ get the Primary menu (by slug: `primary`)
 - ✅ implement light/dark mode, from [Using React Context API with Gatsby by Muhammad Muhsin](https://www.gatsbyjs.org/blog/2019-01-31-using-react-context-api-with-gatsby/)
+- ✅ get all Lighthouse Audits to 💯as a starting point.
 
 ## Stretch Goals
 
 - ___ Featured images done with Gatsby Image
 - ___ Pagination for Posts, Pages, Categories, Tags
+- ___ better menu handling for multiple menu levels and children-of-parent pages (e.g. About>>Our Team)
 - ___ internal links are replaced with Gatsby `Link` (`gatsby-plugin-catch-links` doesn't seem to work?)
 
