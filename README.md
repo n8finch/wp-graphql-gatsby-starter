@@ -61,7 +61,7 @@ If you need to edit ID or the depth of the menu, you can do so in the `src/compo
 - ✅ posts queried and displayed
 - ✅ pages queried and displayed
 - ✅ categories and tags queried and displayed
-- ___ get the Primary menu (by slug: `primary`)
+- ✅ get the Primary menu (by slug: `primary`)
 - ✅ implement light/dark mode, from [Using React Context API with Gatsby by Muhammad Muhsin](https://www.gatsbyjs.org/blog/2019-01-31-using-react-context-api-with-gatsby/)
 
 ## Stretch Goals

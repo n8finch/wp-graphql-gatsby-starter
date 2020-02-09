@@ -34,9 +34,9 @@ const Layout = ({ children }) => (
               <footer>
                 © {new Date().getFullYear()}, Starter built with
                 {` `}
-                <a href="https://www.gatsbyjs.org" target="_blank">Gatsby</a>
+                <a href="https://www.gatsbyjs.org" target="_blank" rel="noopener noreferrer">Gatsby</a>
                 {` `}by{` `}
-                <a href="https://n8finch.com" target="_blank">Nate Finch</a>
+                <a href="https://n8finch.com" target="_blank" rel="noopener noreferrer">Nate Finch</a>
               </footer>
             </div>
           </div>
