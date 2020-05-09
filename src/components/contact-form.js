@@ -1,0 +1,45 @@
+import React from "react"
+import SEO from "../components/seo"
+
+const ContactForm = () => (
+  <>
+    <SEO title="Contact" description="Contact me and I'll respond!" />
+    <h1>Contact</h1>
+    <div className="contact-form">
+      <p>I look forward to hearing from you!</p>
+
+      <form
+        name="contact-form-n8finch"
+        method="POST"
+        netlify-honeypot="bot-field"
+        data-netlify="true"
+      >
+        <input type="hidden" name="form-name" value="contact-form-wp-graphql-starter" />
+        <p class="sr-only">
+          <label>
+            Don’t fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Email:
+            <br /> <input type="text" name="email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message:
+            <br /> <textarea name="message" rows="6"></textarea>
+          </label>
+        </p>
+        <p>
+          <button className="btn btn-primary" type="submit">
+            Send
+          </button>
+        </p>
+      </form>
+    </div>
+  </>
+)
+
+export default ContactForm
