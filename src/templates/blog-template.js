@@ -1,9 +1,9 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const SecondPage = ({ data }) => (
   <Layout>
@@ -36,9 +36,9 @@ const SecondPage = ({ data }) => (
 
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default SecondPage
+export default SecondPage;
 
 export const query = graphql`
   query($databaseId: ID!) {
@@ -74,4 +74,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

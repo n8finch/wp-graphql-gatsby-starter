@@ -1,9 +1,7 @@
-import React from "react"
-import SEO from "../components/seo"
+import React from "react";
 
 const ContactForm = () => (
   <>
-    <SEO title="Contact" description="Contact me and I'll respond!" />
     <h1>Contact</h1>
     <div className="contact-form">
       <p>I look forward to hearing from you!</p>
@@ -14,8 +12,12 @@ const ContactForm = () => (
         netlify-honeypot="bot-field"
         data-netlify="true"
       >
-        <input type="hidden" name="form-name" value="contact-form-wp-graphql-starter" />
-        <p class="sr-only">
+        <input
+          type="hidden"
+          name="form-name"
+          value="contact-form-wp-graphql-starter"
+        />
+        <p className="sr-only">
           <label>
             Don’t fill this out if you're human: <input name="bot-field" />
           </label>
@@ -40,6 +42,6 @@ const ContactForm = () => (
       </form>
     </div>
   </>
-)
+);
 
-export default ContactForm
+export default ContactForm;

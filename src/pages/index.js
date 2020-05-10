@@ -1,16 +1,17 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Avatar from "../components/image"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Avatar from "../components/image";
 
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO
       title="Home"
       description="I love solving problems, learning new things, and helping people. By day, I'm VP of Development at The Digital Ring, a full-service digital marketing agency in Madison, Wisconsin 🧀."
+      image=""
     />
     <h1>
       Hey y'all!
@@ -49,8 +50,8 @@ const IndexPage = ({ data }) => (
           </span>
         </h2>
         {data.wpgraphql.blogs.edges.map(({ node }) => (
-          <>
-            <Link className="blog-link" key={node.slug} to={`/${node.slug}`}>
+          <div key={node.slug}>
+            <Link className="blog-link" to={`/${node.slug}`}>
               {null !== node.featuredImage && (
                 <Img
                   className="blog-image"
@@ -60,7 +61,7 @@ const IndexPage = ({ data }) => (
               )}
               <div dangerouslySetInnerHTML={{ __html: node.title }} />
             </Link>
-          </>
+          </div>
         ))}
         <br />
         <Link to={`/blog`}>See all Blog Posts...</Link>
@@ -102,9 +103,9 @@ const IndexPage = ({ data }) => (
       </div>
     ))}
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query GET_POSTS {
@@ -169,4 +170,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

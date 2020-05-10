@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 
 export default () => {
   return (
@@ -16,5 +16,5 @@ export default () => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const SocialNav = () => {
   return (
@@ -83,7 +83,7 @@ const SocialNav = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default SocialNav
+export default SocialNav;
