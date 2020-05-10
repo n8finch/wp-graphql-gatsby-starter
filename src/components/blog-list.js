@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import Img from "gatsby-image";
 
 const initialState = {
@@ -7,14 +7,33 @@ const initialState = {
   posts: "",
 };
 
-const BlogItem = {
-  //
+const BlogItem = ({ children }) => {
+  return (
+    <div className="blog-archive-container" key={children.slug}>
+      {null !== children.featuredImage && (
+        <div className="blog-archive-image-container">
+          <Link to={`/${children.slug}`}>
+            <Img
+              fixed={children.featuredImage.imageFile.childImageSharp.fixed}
+              alt={children.title}
+            />
+          </Link>
+        </div>
+      )}
+      <div>
+        <Link to={`/${children.slug}`}>
+          <h3 dangerouslySetInnerHTML={{ __html: children.title }} />
+        </Link>
+        <div dangerouslySetInnerHTML={{ __html: children.excerpt }} />
+      </div>
+    </div>
+  );
 };
 
 const BlogList = props => {
-  console.log(props);
-
-  console.log(initialState);
+  initialState.posts = props.children.map(({ node }) => {
+    return node;
+  });
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -23,13 +42,13 @@ const BlogList = props => {
     setSearchTerm(event.target.value);
   };
 
-  //   useEffect(() => {
-  //     const results = people.filter(person =>
-  //       person.toLowerCase().includes(searchTerm)
-  //     )
-  //     setSearchResults(results)
-  //   }, [searchTerm])
-
+  useEffect(() => {
+    const results = initialState.posts.filter(post => {
+      return post.title.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setSearchResults(results);
+  }, [searchTerm]);
+  console.log(searchResults);
   return (
     <>
       <input
@@ -41,25 +60,8 @@ const BlogList = props => {
       />
       <br />
       <br />
-      {props.children.map(({ node }) => (
-        <div className="blog-archive-container" key={node.slug}>
-          {null !== node.featuredImage && (
-            <div className="blog-archive-image-container">
-              <Link to={`/${node.slug}`}>
-                <Img
-                  fixed={node.featuredImage.imageFile.childImageSharp.fixed}
-                  alt={node.title}
-                />
-              </Link>
-            </div>
-          )}
-          <div>
-            <Link to={`/${node.slug}`}>
-              <h3 dangerouslySetInnerHTML={{ __html: node.title }} />
-            </Link>
-            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        </div>
+      {searchResults.map(post => (
+        <BlogItem key={post.slug}>{post}</BlogItem>
       ))}
     </>
   );
