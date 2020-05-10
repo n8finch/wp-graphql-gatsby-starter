@@ -37,26 +37,27 @@ const BlogList = props => {
   });
   initialState.categories = props.children.map(({ node }) => {
     return node.categories.edges.map(({ node }) => {
-      buttonList.push({ name: node.name, slug: node.slug });
-      return node;
+      return node.name;
     });
   });
 
   console.log(initialState.categories);
 
-  // const buttonList = initialState.categories.map(categories => {
-  //   return categories.map(category => {
-  //     return category;
-  //   });
-  // });
+  buttonList = [...new Set(initialState.categories.flat(2))];
 
   console.log(buttonList);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [categoryTerms, setcategoryTerms] = useState([]);
 
   const handleSearch = event => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleCategory = event => {
+    console.log(event.target.value);
+    // setcategoryTerms(event.target.value);
   };
 
   useEffect(() => {
@@ -70,9 +71,14 @@ const BlogList = props => {
     <>
       <div className="category-button-list">
         {buttonList.map(category => {
-          return <button key={category.slug}>{category.name}</button>;
+          return (
+            <button key={category} value={category} onClick={handleCategory}>
+              {category}
+            </button>
+          );
         })}
       </div>
+      <br />
       <input
         type="text"
         placeholder="Type to fileter posts by title"
