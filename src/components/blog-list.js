@@ -31,16 +31,26 @@ const BlogItem = ({ children }) => {
 };
 
 const BlogList = props => {
+  let buttonList = [];
   initialState.posts = props.children.map(({ node }) => {
     return node;
   });
   initialState.categories = props.children.map(({ node }) => {
-    return node.categories.edges.map(node => {
+    return node.categories.edges.map(({ node }) => {
+      buttonList.push({ name: node.name, slug: node.slug });
       return node;
     });
   });
 
   console.log(initialState.categories);
+
+  // const buttonList = initialState.categories.map(categories => {
+  //   return categories.map(category => {
+  //     return category;
+  //   });
+  // });
+
+  console.log(buttonList);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -58,6 +68,11 @@ const BlogList = props => {
 
   return (
     <>
+      <div className="category-button-list">
+        {buttonList.map(category => {
+          return <button key={category.slug}>{category.name}</button>;
+        })}
+      </div>
       <input
         type="text"
         placeholder="Type to fileter posts by title"
