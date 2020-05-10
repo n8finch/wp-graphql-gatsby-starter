@@ -34,6 +34,13 @@ const BlogList = props => {
   initialState.posts = props.children.map(({ node }) => {
     return node;
   });
+  initialState.categories = props.children.map(({ node }) => {
+    return node.categories.edges.map(node => {
+      return node;
+    });
+  });
+
+  console.log(initialState.categories);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -48,7 +55,7 @@ const BlogList = props => {
     });
     setSearchResults(results);
   }, [searchTerm]);
-  console.log(searchResults);
+
   return (
     <>
       <input

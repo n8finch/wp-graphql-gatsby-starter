@@ -55,6 +55,14 @@ export const pageQuery = graphql`
             title
             date
             excerpt
+            categories {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
             content(format: RENDERED)
             featuredImage {
               altText
