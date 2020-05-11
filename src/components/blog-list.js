@@ -41,7 +41,9 @@ const BlogList = props => {
     });
   });
 
-  buttonList = [...new Set(initialState.categories.flat(2))].sort();
+  buttonList = [
+    ...new Set([].concat.apply([], initialState.categories)),
+  ].sort();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
