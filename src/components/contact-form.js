@@ -7,7 +7,7 @@ const ContactForm = () => (
       <p>I look forward to hearing from you!</p>
 
       <form
-        name="contact-form-n8finch"
+        name="contact-form-wpgraphql-starter"
         method="POST"
         netlify-honeypot="bot-field"
         data-netlify="true"
@@ -15,7 +15,7 @@ const ContactForm = () => (
         <input
           type="hidden"
           name="form-name"
-          value="contact-form-wp-graphql-starter"
+          value="contact-form-wpgraphql-starter"
         />
         <p className="sr-only">
           <label>
