@@ -51,12 +51,10 @@ const BlogList = props => {
     setSearchTerm(event.target.value);
   };
 
-  console.log(initialState.posts);
-
   const handleCategory = event => {
     if ("clearTerms" !== event.target.value) {
-      setSearchTerm("");
       setcategoryTerms(categoryTerms.concat(event.target.value));
+      setSearchTerm("");
       return;
     }
     setSearchTerm("");
@@ -71,13 +69,15 @@ const BlogList = props => {
   }, [searchTerm]);
 
   useEffect(() => {
-    const results = initialState.posts.filter(post => {
-      const postCategories = post.categories.edges.map(({ node }) => {
-        return -1 < categoryTerms.indexOf(node.name) ? true : false; //return an array of the post's category names
+    let results = initialState.posts;
+    if (0 !== categoryTerms.length) {
+      results = initialState.posts.filter(post => {
+        const postCategories = post.categories.edges.map(({ node }) => {
+          return -1 < categoryTerms.indexOf(node.name) ? true : false; //return if the category name is in the terms to search for.
+        });
+        return -1 < postCategories.indexOf(true) ? true : false; // return this post of any of the categories are true.
       });
-      console.log(postCategories);
-      return -1 < postCategories.indexOf(true) ? true : false;
-    });
+    }
     setSearchResults(results);
   }, [categoryTerms]);
 
@@ -98,7 +98,11 @@ const BlogList = props => {
           return (
             <button
               key={category}
-              className="btn btn-primary"
+              className={
+                "btn btn-primary " + -1 < categoryTerms.indexOf(category)
+                  ? "btn btn-primary active"
+                  : "btn btn-primary inactive"
+              }
               value={category}
               onClick={handleCategory}
             >

@@ -7,11 +7,7 @@ import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => (
   <Layout className="blog-archive-page">
-    <SEO
-      title="Blog Archive "
-      description="A list of all the blogs..."
-      image=""
-    />
+    <SEO title="Blog Archive " description="A list of all the blogs..." />
 
     <h1>Blog Archive</h1>
 
