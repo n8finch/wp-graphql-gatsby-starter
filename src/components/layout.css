@@ -663,6 +663,7 @@ pre tt:after {
   padding: 3rem 1rem;
 }
 
+button,
 .btn.btn-primary {
   background-color: #94618e;
   color: white;
@@ -670,7 +671,7 @@ pre tt:after {
   transition: 0.25s all ease;
 }
 
-.btn.btn-primary:hover {
+button:hover .btn.btn-primary:hover {
   background-color: #f8eee7;
   color: rgb(0, 0, 0, 0.8);
   cursor: pointer;
@@ -822,9 +823,9 @@ ul#menu-social {
   min-width: unset;
 }
 
-.introduction img {
-  /* max-width: 250px; */
-}
+/* .introduction img {
+  max-width: 250px;
+} */
 
 @media (max-width: 600px) {
   .box-wrapper-first {
@@ -901,6 +902,11 @@ figure.aligncenter,
 
 .blog-archive-container .blog-archive-image-container {
   margin-right: 1rem;
+}
+
+.category-button-list button.btn.btn-primary {
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem;
 }
 
 .newsletter-signup {

@@ -6,7 +6,7 @@ import BlogList from "../components/blog-list";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <Layout className="blog-archive-page">
     <SEO
       title="Blog Archive "
       description="A list of all the blogs..."
@@ -14,9 +14,6 @@ const IndexPage = ({ data }) => (
     />
 
     <h1>Blog Archive</h1>
-    <p>A list of all the blogs...</p>
-
-    <h2>Posts</h2>
 
     <BlogList>{data.wpgraphql.posts.edges}</BlogList>
     {/* {data.wpgraphql.posts.edges.map(({ node }) => (
